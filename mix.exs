@@ -8,8 +8,8 @@ defmodule HTTPoison.Mixfile do
   def project do
     [
       app: :httpoison,
-      version: "1.5.0",
-      elixir: "~> 1.5",
+      version: "1.6.2",
+      elixir: "~> 1.7",
       name: "HTTPoison",
       description: @description,
       package: package(),
@@ -26,12 +26,11 @@ defmodule HTTPoison.Mixfile do
       dialyzer: [
         plt_add_deps: :transitive,
         flags: [
-          # "-Wunmatched_returns",
-          # "-Wrace_conditions",
-          # "-Wunderspecs",
-          # "-Wunknown",
-          # "-Woverspecs",
-          # "-Wspecdiffs",
+          :unmatched_returns,
+          :race_conditions,
+          :underspecs
+          # :overspecs,
+          # :specdiffs
         ]
       ]
     ]
@@ -43,12 +42,12 @@ defmodule HTTPoison.Mixfile do
 
   defp deps do
     [
-      {:hackney, "~> 1.8"},
+      {:hackney, "~> 1.15 and >= 1.15.2"},
       {:mimic, "~> 0.1", only: :test},
-      {:exjsx, "~> 3.1", only: :test},
-      {:httparrot, "~> 1.0", only: :test},
+      {:jason, "~> 1.2", only: :test},
+      {:httparrot, "~> 1.2", only: :test},
       {:earmark, "~> 1.0", only: :dev},
-      {:ex_doc, "~> 0.14", only: :dev},
+      {:ex_doc, "~> 0.18", only: :dev},
       {:dialyxir, "~> 1.0.0-rc.3", only: [:dev, :test], runtime: false}
     ]
   end
